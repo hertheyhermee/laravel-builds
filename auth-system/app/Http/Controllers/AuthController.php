@@ -18,11 +18,8 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
-        $user = $registerUserService->register(
-            $data['name'],
-            $data['email'],
-            $data['password'],  
-        );
+        $user = $registerUserService->register($data);
+        
         $token = $tokenIssuer->issueToken($user);
         return response()->json([
             'token' => $token,
