@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterUserService
 {
-    public function register(string $name, string $email, string $password)
+    public function register($data)
     {
         return User::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 }
